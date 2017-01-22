@@ -24,7 +24,7 @@ public class DbHandle extends SQLiteOpenHelper {
                 "  permission text NOT NULL,\n" +
                 "  is_peer_given tinyint(1) NOT NULL\n" +
                 ")");
-        db.execSQL("INSERT INTO 'app_perm_data' ('app', 'permission', 'is_peer_given') VALUES\n" +
+        db.execSQL("INSERT INTO `app_perm_data` (`app`, `permission`, `is_peer_given`) VALUES\n" +
                 "('Facebook', 'Device & app history', 1),\n" +
                 "('Facebook', 'Identity', 1),\n" +
                 "('Facebook', 'Calendar', 1),\n" +
@@ -50,8 +50,59 @@ public class DbHandle extends SQLiteOpenHelper {
                 "('Whatsapp', 'Camera', 1),\n" +
                 "('Whatsapp', 'Microphone', 1),\n" +
                 "('Whatsapp', 'Wi-Fi connection information', 1),\n" +
-                "('Whatsapp', 'Wi-Fi connection STATE', 1),\n" +
-                "('Whatsapp', 'Device ID & call information', 1);");
+                "('Whatsapp', 'Device ID & call information', 1),\n" +
+                "('Viber', 'Device & app history', 1),\n" +
+                "('Viber', 'Identity', 1),\n" +
+                "('Viber', 'Calendar', 0),\n" +
+                "('Viber', 'Contacts', 1),\n" +
+                "('Viber', 'Location', 0),\n" +
+                "('Viber', 'SMS', 0),\n" +
+                "('Viber', 'Phone', 1),\n" +
+                "('Viber', 'Photos/Media/Files', 1),\n" +
+                "('Viber', 'Storage', 1),\n" +
+                "('Viber', 'Camera', 1),\n" +
+                "('Viber', 'Microphone', 1),\n" +
+                "('Viber', 'Wi-Fi connection information', 1),\n" +
+                "('Viber', 'Device ID & call information', 1),\n" +
+                "('Instagram', 'Device & app history', 0),\n" +
+                "('Instagram', 'Identity', 1),\n" +
+                "('Instagram', 'Calendar', 0),\n" +
+                "('Instagram', 'Contacts', 1),\n" +
+                "('Instagram', 'Location', 1),\n" +
+                "('Instagram', 'SMS', 0),\n" +
+                "('Instagram', 'Phone', 0),\n" +
+                "('Instagram', 'Photos/Media/Files', 1),\n" +
+                "('Instagram', 'Storage', 1),\n" +
+                "('Instagram', 'Camera', 1),\n" +
+                "('Instagram', 'Microphone', 1),\n" +
+                "('Instagram', 'Wi-Fi connection information', 1),\n" +
+                "('Instagram', 'Device ID & call information', 1),('Whatsapp', 'Device & app history', 1),\n" +
+                "('hangouts', 'Identity', 1),\n" +
+                "('hangouts', 'Calendar', 1),\n" +
+                "('hangouts', 'Contacts', 1),\n" +
+                "('hangouts', 'Location', 0),\n" +
+                "('hangouts', 'SMS', 1),\n" +
+                "('hangouts', 'Phone', 1),\n" +
+                "('hangouts', 'Photos/Media/Files', 1),\n" +
+                "('hangouts', 'Storage', 1),\n" +
+                "('hangouts', 'Camera', 1),\n" +
+                "('hangouts', 'Microphone', 1),\n" +
+                "('hangouts', 'Wi-Fi connection information', 1),\n" +
+                "('hangouts', 'Device ID & call information', 1),\n" +
+                "('Candy Crush', '0', 0),\n" +
+                "('Messenger', 'Device & app history', 1),\n" +
+                "('Messenger', 'Identity', 1),\n" +
+                "('Messenger', 'Calendar', 0),\n" +
+                "('Messenger', 'Contacts', 1),\n" +
+                "('Messenger', 'Location', 0),\n" +
+                "('Messenger', 'SMS', 1),\n" +
+                "('Messenger', 'Phone', 1),\n" +
+                "('Messenger', 'Photos/Media/Files', 1),\n" +
+                "('Messenger', 'Storage', 1),\n" +
+                "('Messenger', 'Camera', 1),\n" +
+                "('Messenger', 'Microphone', 1),\n" +
+                "('Messenger', 'Wi-Fi connection information', 1),\n" +
+                "('Messenger', 'Device ID & call information', 1);");
 
     }
 

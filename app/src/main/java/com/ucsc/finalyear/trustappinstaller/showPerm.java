@@ -1,6 +1,7 @@
 package com.ucsc.finalyear.trustappinstaller;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -26,23 +27,29 @@ public class showPerm extends Activity {
         Object[] ar=prm.toArray();
         String[] web=new String[ar.length];
         Integer[] imageId=new Integer[ar.length];
-        for(int i=0;i<ar.length;i++){
-            Perm p=(Perm)prm.get(i);
-            web[i]=p.getPermname();
-            if(p.ispper()) {
-                imageId[i] = 1;
+
+            for (int i = 0; i < ar.length; i++) {
+                Perm p = (Perm) prm.get(i);
+                web[i] = p.getPermname();
+                if (p.ispper()) {
+                    imageId[i] = 1;
+                } else {
+                    imageId[i] = 0;
+                }
             }
-            else{
-                imageId[i] = 0;
-            }
-        }
-        CustomList adapter = new
-                CustomList(showPerm.this, web, imageId);
-        list=(ListView)findViewById(R.id.listperm);
-        list.setAdapter(adapter);
+            CustomList adapter = new
+                    CustomList(showPerm.this, web, imageId);
+            list = (ListView) findViewById(R.id.listperm);
+            list.setAdapter(adapter);
+
 
 
     }
-
+    public void openDialog() {
+        final Dialog dialog = new Dialog(getApplicationContext()); // Context, this, etc.
+        dialog.setContentView(R.layout.cusomdialog);
+        dialog.setTitle("No trusted Peer");
+        dialog.show();
+    }
 
 }

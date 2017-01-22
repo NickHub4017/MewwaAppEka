@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import android.support.v7.widget.SearchView;
@@ -51,11 +52,22 @@ public class AppSearchActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 App appl=(App)myAppAdapter.arraylist.get(position);
 
+                DbHandle db=new DbHandle(getApplicationContext());
+                ArrayList<Perm> prm=db.getPermList(appl.getAppTitle());
+                Object[] ar=prm.toArray();
+                if(ar.length==1){
+                    Toast.makeText(getApplicationContext(),"Your selected Trusted peer doesn't use this app. Please use Your own permissions.",Toast.LENGTH_LONG).show();
 
-                //Toast.makeText(getApplicationContext()," ddd  "+permls.size(),Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(AppSearchActivity.this, showPerm.class);
-                intent.putExtra("appid",appl.getAppTitle());
-                startActivityForResult(intent, 100);
+                }
+                else{
+
+                    //Toast.makeText(getApplicationContext()," ddd  "+permls.size(),Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(AppSearchActivity.this, showPerm.class);
+                    intent.putExtra("appid",appl.getAppTitle());
+                    startActivityForResult(intent, 100);
+                }
+
+
             }
         });
     }
@@ -69,6 +81,7 @@ public class AppSearchActivity extends AppCompatActivity {
 
         public class ViewHolder {
             TextView txtTitle, txtSubTitle;
+            ImageView imgview,installicon;
 
 
         }
@@ -113,7 +126,9 @@ public class AppSearchActivity extends AppCompatActivity {
                 // configure view holder
                 viewHolder = new ViewHolder();
                 viewHolder.txtTitle = (TextView) rowView.findViewById(R.id.title);
-                viewHolder.txtSubTitle = (TextView) rowView.findViewById(R.id.subtitle);
+
+                viewHolder.imgview=(ImageView)rowView.findViewById(R.id.appicon);
+                viewHolder.installicon=(ImageView)rowView.findViewById(R.id.install);
                 rowView.setTag(viewHolder);
 
             } else {
@@ -121,8 +136,30 @@ public class AppSearchActivity extends AppCompatActivity {
             }
 
             viewHolder.txtTitle.setText(parkingList.get(position).getAppTitle() + "");
-            viewHolder.txtSubTitle.setText(parkingList.get(position).getAppTitle() + "");
+          //  viewHolder.txtSubTitle.setText(parkingList.get(position).getAppTitle() + "");
+            if(parkingList.get(position).getAppTitle().equals("Candy Crush") ) {
+                viewHolder.imgview.setImageResource(R.drawable.candy);
+            }
+            else if(parkingList.get(position).getAppTitle().equals("Facebook") ) {
+                viewHolder.imgview.setImageResource(R.drawable.fb);
+            }
+            else if(parkingList.get(position).getAppTitle().equals("Hangouts") ) {
+                viewHolder.imgview.setImageResource(R.drawable.hangouts);
+            }
+            else if(parkingList.get(position).getAppTitle().equals("Instagram") ) {
+                viewHolder.imgview.setImageResource(R.drawable.inst);
+            }
+            else if(parkingList.get(position).getAppTitle().equals("Messenger") ) {
+                viewHolder.imgview.setImageResource(R.drawable.messenger);
+            }
+            else if(parkingList.get(position).getAppTitle().equals("Viber") ) {
+                viewHolder.imgview.setImageResource(R.drawable.viber);
+            }
+            else if(parkingList.get(position).getAppTitle().equals("Whatsapp") ) {
+                viewHolder.imgview.setImageResource(R.drawable.whts);
+            }
 
+            viewHolder.installicon.setImageResource(R.drawable.install);
             return rowView;
 
 
