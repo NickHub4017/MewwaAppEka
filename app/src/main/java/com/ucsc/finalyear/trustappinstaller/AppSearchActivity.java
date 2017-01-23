@@ -1,6 +1,9 @@
 package com.ucsc.finalyear.trustappinstaller;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
@@ -12,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -65,6 +70,8 @@ public class AppSearchActivity extends AppCompatActivity {
                     Intent intent = new Intent(AppSearchActivity.this, showPerm.class);
                     intent.putExtra("appid",appl.getAppTitle());
                     startActivityForResult(intent, 100);
+
+                    //showData();
                 }
 
 
@@ -246,6 +253,30 @@ public class AppSearchActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void showData(){
+        final Dialog dialog = new Dialog(getApplicationContext());
+        dialog.setContentView(R.layout.alert);
+        dialog.setTitle("Title...");
+
+        // set the custom dialog components - text, image and button
+        TextView text = (TextView) dialog.findViewById(R.id.textal);
+        text.setText("Android custom dialog example!");
+        ImageView image = (ImageView) dialog.findViewById(R.id.imageal);
+        image.setImageResource(R.drawable.candy);
+
+        Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
+        // if button is clicked, close the custom dialog
+        dialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+
     }
 
 }

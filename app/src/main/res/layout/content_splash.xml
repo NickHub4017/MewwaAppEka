@@ -12,8 +12,8 @@
     tools:context="com.ucsc.finalyear.trustappinstaller.SplashActivity"
     tools:showIn="@layout/activity_splash">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:src="@drawable/logo"/>
 </RelativeLayout>

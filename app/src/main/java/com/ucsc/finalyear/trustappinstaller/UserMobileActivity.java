@@ -2,6 +2,7 @@ package com.ucsc.finalyear.trustappinstaller;
 
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -22,7 +23,9 @@ public class UserMobileActivity extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Toast.makeText(getApplicationContext(),"Please select an trusted peer to proceed",Toast.LENGTH_LONG).show();
         setListAdapter(new UserArrayAdapter(this, MOBILE_OS));
+
 
     }
 
@@ -35,8 +38,11 @@ public class UserMobileActivity extends ListActivity {
 
         SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, Context.MODE_PRIVATE).edit();
         editor.putString("name", selectedValue.split("-")[0]);
-        editor.putString("phone",  selectedValue.split("-")[1]);
+        editor.putString("phone", selectedValue.split("-")[1]);
         editor.commit();
+
+        Intent gobck=new Intent(UserMobileActivity.this,SplashActivity.class);
+        startActivity(gobck);
 
 
     }
